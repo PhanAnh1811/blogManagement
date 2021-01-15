@@ -6,7 +6,7 @@ import Wrapper from '../components/Wrapper'
 const CreateScreen = ({ navigation }) => {
     return (
         <View>
-            <Header />
+            <Header navigation={navigation} screen='Show' iconName='close'/>
             <Wrapper editTitle="New" editContent="New" 
             navigation={navigation} screen='Show' name="Save" />
         </View>

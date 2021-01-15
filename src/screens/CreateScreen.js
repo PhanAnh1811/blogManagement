@@ -6,7 +6,7 @@ const CreateScreen = ({ navigation }) => {
     return (
 
         <View>
-            <Header />
+            <Header navigation={navigation} screen='Index' iconName='close'/>
             <Wrapper navigation={navigation} screen='Index' name="Save"/>
         </View>
     )
