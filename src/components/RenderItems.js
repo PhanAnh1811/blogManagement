@@ -1,45 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import BlogContext from '../context/BlogContext';
 
-const DATA = [
-    {
-        id: 1,
-        name: "item 1"
-    },
-    {
-        id: 2,
-        name: "item 2"
-    },
-    {
-        id: 3,
-        name: "item 3"
-    },
-]
 
 const RenderItems = ({ navigation }) => {
+    const dataFromBlogContext = useContext(BlogContext);
+    const {removeBlogPost} = dataFromBlogContext;
+    
     return (
         <View>
             <FlatList
                 showsVerticalScrollIndicator={false}
-                data={DATA}
+                data={dataFromBlogContext.data}
                 keyExtractor={e => e.id.toString()}
-                renderItem={({ item }) => {
+                renderItem={({ item,index }) => {
                     return (
 
                         <View style={Styles.wrapper}>
                             <TouchableOpacity onPress={() => navigation.navigate('Show')}>
-                                <Text style={Styles.txt}>Blog Title</Text>
+                                <Text style={Styles.txt}>{item.name}</Text>
                             </TouchableOpacity>
 
                             <View></View>
 
-                            <TouchableOpacity onPress={() => console.log('Remove')}>
+                            <TouchableOpacity onPress={() => removeBlogPost(item.id)}>
                                 <AntDesign name="delete"
                                     size={30}
                                     style={Styles.icons}
-                                />
+                                />                                      
                             </TouchableOpacity>
                         </View>
                     )
