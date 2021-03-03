@@ -1,19 +1,30 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 
-const Wrapper = ({ editTitle, editContent, navigation, screen, name }) => {
+const Wrapper = ({ editTitle, editContent, navigation, screen, name,callback }) => {
+    const [title,setTitle] = useState('')
+    const [content,setContent] = useState('')
+
+
     return (
         <View style={styles.wrapper}>
             <View>
                 <Text style={styles.txt}>Enter {editTitle} Title:</Text>
-                <TextInput style={styles.textInput} />
+                <TextInput 
+                value={title}
+                onChangeText={text => setTitle(text)}
+                style={styles.textInput} 
+                />
             </View>
             <View>
                 <Text style={styles.txt}>Enter {editContent} Content:</Text>
-                <TextInput style={styles.textInput} />
-            </View>
+                <TextInput 
+                value={content}
+                onChangeText={text => setContent(text)}
+                style={styles.textInput} />
+            </View> 
 
-            <Button style={styles.btn} onPress={() => navigation.navigate(screen)} title={name} />
+            <Button style={styles.btn} onPress={() => callback(title,content)} title={name} />
         </View>
     )
 }

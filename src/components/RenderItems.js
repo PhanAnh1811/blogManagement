@@ -17,13 +17,12 @@ const RenderItems = ({ navigation }) => {
                 keyExtractor={e => e.id.toString()}
                 renderItem={({ item,index }) => {
                     return (
-
                         <View style={Styles.wrapper}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Show')}>
-                                <Text style={Styles.txt}>{item.name}</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('Show',{item})}>
+                                <Text style={Styles.txt}>{item.title}</Text>
                             </TouchableOpacity>
 
-                            <View></View>
+                           
 
                             <TouchableOpacity onPress={() => removeBlogPost(item.id)}>
                                 <AntDesign name="delete"

@@ -16,7 +16,7 @@ const Header =({iconName, navigation, screen}) => {
         <View style={styles.header}>
             <View></View>
             <Text style={styles.txt}>Blog List</Text>
-            <TouchableOpacity onPress={addBlogPost} >
+            <TouchableOpacity onPress={() => navigation.navigate('Create')} >
             <AntDesign name={iconName} size={40}/>
             </TouchableOpacity>
             

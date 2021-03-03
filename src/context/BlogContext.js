@@ -4,16 +4,10 @@ import React,{useState} from 'react'
 const DATA = [
     {
         id: 1,
-        name: "item store 1"
+        title:"hehe",
+        content:"hehe"
     },
-    {
-        id: 2,
-        name: "item store 2"
-    },
-    {
-        id: 3,
-        name: "item store 3"
-    },
+  
 ]
 
 
@@ -21,7 +15,7 @@ const BlogContext = React.createContext()
 
 
 const generateId = () => {
-    return Math.random() * 999 ;
+    return Math.floor(Math.random() * 999 );
 }
 
 
@@ -30,9 +24,10 @@ export const BlogProvider = ({children}) => {
 
 
 
-    const addBlogPost = () => {
-        // Spread Operator -> ES6 
-        setBlogPosts([...blogPosts,{id:generateId(),name:`Blog Post # ${blogPosts.length + 1}`}])
+    const addBlogPost = (title,content) => {
+        // Spread Operator -> ES6
+        console.log("Add Blog Post"); 
+        setBlogPosts([...blogPosts,{id:generateId(),title:title,content:content}])
     }
 
     const removeBlogPost = (idNeedToRemove) => {
