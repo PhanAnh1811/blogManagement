@@ -1,15 +1,13 @@
 import React,{useState} from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 
-const Wrapper = ({ editTitle, editContent, navigation, screen, name,callback }) => {
-    const [title,setTitle] = useState('')
-    const [content,setContent] = useState('')
-
-
+const Wrapper = ({ captionTitle,captionContent, 
+    title,setTitle,content,setContent,
+    name,callback }) => {
     return (
         <View style={styles.wrapper}>
             <View>
-                <Text style={styles.txt}>Enter {editTitle} Title:</Text>
+                <Text style={styles.txt}>{captionTitle}</Text>
                 <TextInput 
                 value={title}
                 onChangeText={text => setTitle(text)}
@@ -17,14 +15,14 @@ const Wrapper = ({ editTitle, editContent, navigation, screen, name,callback }) 
                 />
             </View>
             <View>
-                <Text style={styles.txt}>Enter {editContent} Content:</Text>
+                <Text style={styles.txt}>{captionContent}</Text>
                 <TextInput 
                 value={content}
                 onChangeText={text => setContent(text)}
                 style={styles.textInput} />
             </View> 
 
-            <Button style={styles.btn} onPress={() => callback(title,content)} title={name} />
+            <Button style={styles.btn} onPress={callback} title={name} />
         </View>
     )
 }

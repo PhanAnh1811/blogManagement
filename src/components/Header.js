@@ -4,11 +4,11 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import BlogContext from '../context/BlogContext'
 
-const Header =({iconName, navigation, screen}) => {
+const Header =({iconName, navigation, screenName,myParams}) => {
 
     const blogContext = useContext(BlogContext)
 
-    // Destructuring 
+   
 
     const {addBlogPost} = blogContext;
 
@@ -16,7 +16,7 @@ const Header =({iconName, navigation, screen}) => {
         <View style={styles.header}>
             <View></View>
             <Text style={styles.txt}>Blog List</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Create')} >
+            <TouchableOpacity onPress={() => navigation.navigate(screenName,myParams)}>
             <AntDesign name={iconName} size={40}/>
             </TouchableOpacity>
             

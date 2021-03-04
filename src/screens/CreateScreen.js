@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext, useState} from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 import Header from '../components/Header'
 import Wrapper from '../components/Wrapper'
@@ -10,15 +10,23 @@ const CreateScreen = ({ navigation }) => {
      
     const {addBlogPost} = blogCtx;
 
+    const [title,setTitle]  = useState('');
+    const [content,setContent] = useState('');
+
 
     return (
         <View>
             <Header navigation={navigation} screen='Index' iconName='close'/>
             <Wrapper 
-                callback={(title,content) => {
+                captionTitle='Enter Title'
+                captionContent='Enter Content'
+                title={title}
+                setTitle={setTitle}
+                content={content}
+                setContent={setContent}
+                callback={() => {
                     addBlogPost(title,content)
                     navigation.navigate('Index')
-
                 }}
                 navigation={navigation}
                 screen='Index' 

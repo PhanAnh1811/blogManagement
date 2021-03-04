@@ -8,7 +8,7 @@ const ShowScreen = ({ navigation, route }) => {
     console.log(detail);
     return (
         <View>
-            <Header iconName='edit' navigation={navigation} screen='Edit' />
+            <Header myParams={detail}  iconName='edit' navigation={navigation} screenName='Edit' />
             <View style={Styles.wrapper}>
 
                 <Text style={Styles.title}>

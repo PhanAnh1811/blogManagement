@@ -6,7 +6,7 @@ import RenderItems from '../components/RenderItems'
 const IndexScreen = ({ navigation }) => {
     return (
         <View>
-            <Header iconName='plus' navigation={navigation} screen='Create'/>
+            <Header iconName='plus' navigation={navigation} screenName='Create'/>
             <RenderItems navigation={navigation} />
         </View>
     )
