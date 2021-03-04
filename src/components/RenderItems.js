@@ -7,28 +7,28 @@ import BlogContext from '../context/BlogContext';
 
 const RenderItems = ({ navigation }) => {
     const dataFromBlogContext = useContext(BlogContext);
-    const {removeBlogPost} = dataFromBlogContext;
-    
+    const { removeBlogPost } = dataFromBlogContext;
+
     return (
         <View>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={dataFromBlogContext.data}
                 keyExtractor={e => e.id.toString()}
-                renderItem={({ item,index }) => {
+                renderItem={({ item }) => {
                     return (
                         <View style={Styles.wrapper}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Show',{item})}>
+                            <TouchableOpacity onPress={() => navigation.navigate('Show', { item })}>
                                 <Text style={Styles.txt}>{item.title}</Text>
                             </TouchableOpacity>
 
-                           
+
 
                             <TouchableOpacity onPress={() => removeBlogPost(item.id)}>
                                 <AntDesign name="delete"
                                     size={30}
                                     style={Styles.icons}
-                                />                                      
+                                />
                             </TouchableOpacity>
                         </View>
                     )
