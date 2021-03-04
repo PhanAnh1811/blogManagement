@@ -35,6 +35,9 @@ export const BlogProvider = ({children}) => {
         setBlogPosts(data);
     }
 
+    const editBlogPost=(title,content)=>{
+        
+    }
 
 
     return(

@@ -7,12 +7,12 @@ import BlogContext from '../context/BlogContext'
 const CreateScreen = ({ navigation }) => {
 
     const blogCnt=useContext(BlogContext);
-    const {addBlogPost}=blogCnt;
+    const {editBlogPost}=blogCnt;
 
 
     return (
         <View>
-            <Header navigation={navigation} screen='Show' iconName='close'/>
+            <Header navigation={navigation} screen='Index' iconName='close'/>
             <Wrapper editTitle="New" editContent="New" 
             callback={(title,content)=>{
                 addBlogPost(title,content)
