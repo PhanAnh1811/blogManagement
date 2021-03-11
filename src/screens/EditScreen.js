@@ -12,10 +12,10 @@ const EditScreen = ({ navigation,route }) => {
     const [newTitle,setNewTitle]  = useState(data !== null ? data.title : '');
     const [newContent,setNewContent] = useState(data !== null ? data.content : '');
 
-
+    
 
     const blogCnt=useContext(BlogContext);
-
+    const {addBlogPost,editBlogPost}=blogCnt
 
 
     return (
@@ -30,7 +30,8 @@ const EditScreen = ({ navigation,route }) => {
                 setContent={setNewContent}
                 name='Edit'
                 callback={() => {
-
+                    editBlogPost(data.id,newTitle,newContent)
+                    navigation.navigate('Show',{data})
                 }}
             
             />

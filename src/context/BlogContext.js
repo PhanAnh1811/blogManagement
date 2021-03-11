@@ -7,9 +7,32 @@ const DATA = [
         title:"hehe",
         content:"hehe"
     },
-  
 ]
 
+
+// Refactor useReducer
+
+/**
+ * 1. Create a reducer
+ * Reducer is just a pure function
+ * Pure function : (state) => inside changes
+ * 
+ * // Not a pure function
+ * var currency = 10;
+ * const exchange = (value) => {
+ *  return value * currency;
+ * }
+ *  
+ * // Pure function
+ * const calculate = (x) => {
+ *  return x * 2;
+ * }
+ * 
+ * => Reducer pure function
+ * 
+ * 2. useReducer
+ * 
+ */
 
 const BlogContext = React.createContext()
 
@@ -20,7 +43,7 @@ const generateId = () => {
 
 
 export const BlogProvider = ({children}) => {
-    const [blogPosts,setBlogPosts] = useState([]);
+    const [blogPosts,setBlogPosts] = useState(DATA);
 
 
 
@@ -35,10 +58,19 @@ export const BlogProvider = ({children}) => {
         setBlogPosts(data);
     }
 
-    const editBlogPost=(title,content)=>{
+    const editBlogPost=(id,title,content)=>{
+        const postNeedToUpdate = blogPosts.find((item) => item.id ===id);
+        postNeedToUpdate.content = content;
+        postNeedToUpdate.title = title;
+        postNeedToUpdate.id=id;
+        const mapped = blogPosts.filter((item) => item.id !== id )
+        mapped.push(postNeedToUpdate)
         
+        console.log(mapped);
+        setBlogPosts(mapped)
     }
 
+   
 
     return(
         // Value truyền từ context xuống
@@ -49,7 +81,7 @@ export const BlogProvider = ({children}) => {
         // Into value
 
         <BlogContext.Provider
-            value={{data:blogPosts,addBlogPost,removeBlogPost}}
+            value={{data:blogPosts,addBlogPost,removeBlogPost,editBlogPost}}
         >
             {children}
         </BlogContext.Provider>
