@@ -7,7 +7,7 @@ const Wrapper = ({ captionTitle,captionContent,
     return (
         <View style={styles.wrapper}>
             <View>
-                <Text style={styles.txt}>{captionTitle}</Text>
+                <Text style={styles.label}>{captionTitle}</Text>
                 <TextInput 
                 value={title}
                 onChangeText={text => setTitle(text)}
@@ -15,7 +15,7 @@ const Wrapper = ({ captionTitle,captionContent,
                 />
             </View>
             <View>
-                <Text style={styles.txt}>{captionContent}</Text>
+                <Text style={styles.label}>{captionContent}</Text>
                 <TextInput 
                 value={content}
                 onChangeText={text => setContent(text)}
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 
 
     },
-    txt:{
+    label:{
         fontSize:20,
         fontWeight:"bold",
     }
